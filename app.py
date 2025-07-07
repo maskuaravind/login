@@ -3,6 +3,7 @@ import sqlite3
 from Crypto.Cipher import AES
 import base64
 import hashlib
+import os
 
 app = Flask(__name__)
 app.secret_key='arya29!!'
@@ -72,5 +73,6 @@ def show_data():
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    port = int(os.environ.get('PORT', 5000))  # use Render's assigned port
+    app.run(host='0.0.0.0', port=port)
 
